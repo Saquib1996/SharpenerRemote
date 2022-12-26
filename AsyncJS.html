@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async</title>
+</head>
+
+<body></body>
+
+</html>
+
+<script>
+    const posts = [
+        { title: "Post one", body: "This is post one",createdAt:new Date().getTime() },
+        { title: "Post two", body: "This is post two",createdAt:new Date().getTime() }
+    ];
+    function getPosts() {
+        setTimeout(function () {
+            let output = '';
+            posts.forEach((post, index) => {
+                output += `<li>${post.title} - last updated ${(new Date().getTime()-post.createdAt)/1000} seconds ago </li>`;
+            });
+            document.body.innerHTML = output;
+        }, 1000);
+    }
+
+    function createPost(post, callback) {
+        setTimeout(function () {
+            posts.push({...post,createdAt:new Date().getTime()});
+            callback();
+        }, 2000);
+    }
+
+    // getPosts();
+
+    createPost({ title: 'Post Three', body: 'This is post three'}, getPosts);
+
+    function create4thPost(post,callback1){
+        setTimeout(function(){
+            posts.push({...post,createdAt:new Date().getTime()});
+            callback1();
+        },3000)
+    }
+    create4thPost({ title: 'Post Four', body: 'This is post Four'},createPost)
+    
+</script>
