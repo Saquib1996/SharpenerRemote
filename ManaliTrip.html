@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ManaliTrip</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+
+    function buyCar(cb){
+        setTimeout(() => {
+            console.log('Buy a car')
+            cb();
+        },5000)
+    }
+    function PlanATrip(cb){
+        setTimeout(() => {
+            console.log('Lets go to Manali');
+            cb();
+        },2000);
+    }
+    function reachManali(){
+        setTimeout(()=>{
+            console.log("Reach Manali");
+        },1000)
+    }
+
+    buyCar(PlanATrip(reachManali));
+</script>
