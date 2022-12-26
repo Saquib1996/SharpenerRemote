@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AsyncJSPart-2</title>
+</head>
+
+<body></body>
+
+</html>
+
+<script>
+    const posts = [
+        { title: "Post one", body: "This is post one" },
+        { title: "Post two", body: "This is post two" }
+    ];
+    function getPosts() {
+        setTimeout(function () {
+            let output = '';
+            posts.forEach((post, index) => {
+                output += `<li>${post.title}</li>`;
+            });
+            document.body.innerHTML = output;
+        }, 1000);
+    }
+
+    function createPost(post) {
+        return new Promise((resolve, reject) => {
+            setTimeout(function () {
+                posts.push(post);
+                const error = true;
+
+                if (!error) {
+                    resolve();
+                }
+                else {
+                    reject('Error:Something went wrong');
+                }
+            }, 2000);
+        })
+    }
+
+    // createPost({ title: 'Post Three', body: 'This is post 3' })
+    //     .then(getPosts)
+    //     .catch(function (err) {
+    //         console.log(err);
+    //     });
+
+    // Promise.all
+
+    // const promise1=Promise.resolve('Hello World');
+    // const promise2=10;
+    // const promise3=new Promise((resolve,reject)=>{
+    //     setTimeout(resolve,2000,'Goodbye');
+    // });
+
+    // Promise.all([promise1,promise2,promise3])
+    // .then((values) => console.log(values));
+
+    // Async/Await
+
+    // async function init(){
+    //     await createPost({ title: 'Post Three', body: 'This is post Three' }); 
+
+
+    //     getPosts();
+    // }
+
+    // init();
+
+    // const count =true;
+
+    // let countValue = new Promise(function (resolve, reject) {
+    //     if (count) {
+    //         resolve("There is a count value.");
+    //     } else {
+    //         reject("There is no count value");
+    //     }
+    // });
+
+    // console.log(countValue);
+
+
+    // returns a promise
+
+    // let countValue = new Promise(function (resolve, reject) {
+    //     resolve("Promise resolved");
+    // });
+
+    // // executes when promise is resolved successfully
+
+    // countValue
+    //     .then(function successValue(result) {
+    //         console.log(result);
+    //     })
+
+    //     .then(function successValue1() {
+    //         console.log("You can call multiple functions this way.");
+    //     });
+
+    // async function example
+
+    // function f() {
+    //     console.log('Async function.');
+    //     return Promise;
+    // }
+
+    // f();
+
+    // async function f() {
+    //     console.log('Async function.');
+    //     return Promise.resolve("Saquib");
+    // }
+
+    // f().then(function (result) {
+    //     console.log(result)
+    // });
+
+    // a promise
+    let promise = new Promise(function (resolve, reject) {
+        setTimeout(function () {
+            resolve('Promise resolved')
+        }, 4000);
+    });
+
+    // async function
+    async function asyncFunc() {
+
+        // wait until the promise resolves 
+        let result = await promise;
+
+        console.log(result);
+        console.log('hello');
+    }
+
+    // calling the async function
+    asyncFunc();
+
+</script>
