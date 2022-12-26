@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AsyncAwait4</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    console.log('Person1:shows ticket');
+    console.log('Person2:shows ticket');
+
+    const preMovie = async function () {
+        const promiseWifeBringingTicks = new Promise(function (resolve, reject) {
+            setTimeout(function () {
+                resolve('ticket');
+            }, 3000)
+        });
+
+        const getPopcorn = new Promise(function (resolve, reject) {
+            resolve(`Popcorn`);
+        });
+        const getCandy = new Promise(function (resolve, reject) {
+            resolve(`candy`);
+        });
+
+        const getCoke = new Promise(function (resolve, reject) {
+            resolve(`Coke`);
+        })
+
+        let ticket = await promiseWifeBringingTicks;
+
+        let [popcorn, candy, coke] = await Promise.all([getPopcorn, getCandy, getCoke])
+
+        console.log(`${popcorn},${candy},${coke}`);
+
+        return ticket;
+    }
+
+    preMovie().then(function (msg) {
+        console.log(`Person3:shows ${msg}`);
+    });
+
+    console.log('Person4:shows ticket');
+    console.log('Person5:shows ticket');
+</script>
