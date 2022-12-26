@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AsyncAwait3-1</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    console.log('person1:shows ticket');
+    console.log('person2:shows ticket');
+    const promiseWifeBringingTicks = new Promise(function (resolve, reject) {
+        setTimeout(function () {
+            resolve('ticket');
+            // reject('Promise rejected')
+        }, 3000)
+    });
+    // promiseWifeBringingTicks
+    // .then((t) => {
+    //     console.log(`person3: shows ${t}`);
+    // });
+
+    promiseWifeBringingTicks
+        .then(function (P) {
+            console.log('Wife:I have the ticket');
+            console.log('Husband:we should go in');
+            console.log('Wife: no I am hungry');
+            return new Promise(function (resolve, reject) {
+                resolve(`${P} Popcorn`)
+            })
+        })
+        .then(function (B) {
+            console.log('Husband:I got some popcorn');
+            console.log('Husband: we should go in');
+            console.log('Wife: I need butter on my popcorn');
+            return new Promise(function (resolve, reject) {
+                resolve(`${B} Butter`)
+            })
+        })
+        .then(function (msg) {
+            console.log(msg);
+        })
+    console.log('person4:shows ticket');
+    console.log('person5:shows ticket');
+</script>
