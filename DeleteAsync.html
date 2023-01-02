@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>DeleteAsync</title>
 </head>
 
 <body>
@@ -29,13 +29,30 @@
         }, 1000);
     }
 
-    function createPost(post, callback) {
-        setTimeout(function () {
-            posts.push({...post, createdAt: new Date().getTime() });
-            callback();
-        }, 2000);
+    function createPost(post) {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                posts.push({ ...post, createdAt: new Date().getTime() })
+                const error = false;
+                if (!error) {
+                    resolve();
+                } else {
+                    reject('Error:Something went wrong')
+                }
+            }, 2000);
+        });
     }
-
+    const user = {
+        username: "Saquib Hassan",
+        lastActivityTime: '1 Jan 2023'
+    }
+    function updateLastActivityTime() {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                user.lastActivityTime = new Date().getTime();
+            }, 1000)
+        })
+    }
     function deletePost() {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
@@ -50,7 +67,7 @@
     }
     // getPosts();
 
-    createPost({ title: 'Post Three', body: 'This is post three' }, getPosts)
+    createPost({ title: 'Post Three', body: 'This is post three' })
         .then(() => {
             getPosts()
             deletePost().then(() => {
@@ -68,5 +85,6 @@
             })
 
         })
+        .catch(err => console.log(err))
 
 </script>
