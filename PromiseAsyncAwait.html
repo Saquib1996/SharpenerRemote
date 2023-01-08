@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PromiseAsyncAwait</title>
+</head>
+
+<body>
+
+
+    <script>
+
+        // Asynchronous call back
+
+        // console.log('Start');
+        // setTimeout(()=>{
+        //     console.log("Inside setTimeOut function");
+        // },2000)
+        // console.log('End');
+
+        // Synchronous call back
+
+        // console.log('Start');
+        // const roll = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        // roll.forEach((el) => {
+        //     console.log(el);
+        // })
+        // console.log('End');
+
+        // console.log('Start');
+        // function getName(name){
+        //     setTimeout(() => {
+        //         console.log("Inside SetTimeOut");
+        //         return name;
+        //     },2000)
+        // }
+
+        // const nm = getName("Saquib");
+        // console.log(nm);
+        // console.log('End');
+
+        // console.log('Start');
+        // function getName(name, callBack) {
+        //     setTimeout(() => {
+        //         console.log("Inside SetTimeOut");
+        //         callBack(name);
+        //     }, 2000)
+        // }
+
+        // const nm = getName("Saquib", (nm) => { console.log(nm); });
+
+        // console.log('End');
+
+        // console.log('Start');
+        // function getName(name, callBack) {
+        //     setTimeout(() => {
+        //         console.log("Inside SetTimeOut");
+        //         callBack(name);
+        //     }, 2000)
+        // }
+
+        // function getHobbies(name, callBack) {
+        //     setTimeout(() => {
+        //         console.log('Inside Hobbies setTimeOut');
+        //         callBack(["Cricket", 'Reading', 'Dancing'])
+        //     }, 1000)
+        // }
+
+        // const nm = getName("Saquib", (nm) => {
+        //     console.log(nm);
+        //     getHobbies(nm, (hobby) => { 
+        //         console.log(hobby)
+        //      })
+        // });
+
+        // console.log('End');
+
+        // const promiseObj1 = new Promise((resolve, reject) => {
+        //     let req = true;
+        //     if (req === true) {
+        //         resolve("Request Success")
+        //     } else {
+        //         reject('Request Rejected')
+        //     }
+        // });
+
+        // promiseObj1.then(
+        //     (value) => { console.log(value) },
+        //     (error) => { console.log(error) }
+        // );
+
+        // const promiseObj1 = new Promise((resolve, reject) => {
+        //     let req = true;
+        //     if (req === true) {
+        //         resolve("Request Success")
+        //     } else {
+        //         reject('Request Rejected')
+        //     }
+        // }).then(
+        //     (value) => { console.log(value) },
+        //     // (error) => { console.log(error) }
+        // ).catch( (error) => { console.log(error) })
+
+        // const promiseObj = new Promise((resolve, reject) => {
+        //     let num = 10
+        //     resolve(num)
+        // }).then(
+        //     (value) => {
+        //         console.log(value);
+        //         return value + 10
+        //     }
+        // ).then(
+        //     (value) => {console.log(value);}
+        // )
+
+
+        // const promiseObj1 = new Promise((resolve, reject) => {
+        //     let req = true;
+        //     if (req === true) {
+        //         resolve("Request Success")
+        //     } else {
+        //         reject('Request Rejected')
+        //     }
+        // }).then(
+        //     (value) => { console.log(value) },
+        //     // (error) => { console.log(error) }
+        // ).catch((error) => {
+        //     console.log(error)
+        // }).finally(() => { console.log('Cleaned Up'); })
+
+
+        // console.log('Start');
+        // function getName(name) {
+        //     return new Promise((resolve, reject) => {
+        //         setTimeout(() => {
+        //             console.log("Inside SetTimeOut");
+        //             resolve(name);
+        //         }, 2000)
+        //     })
+        // }
+
+        // function getHobbies(name) {
+        //     return new Promise((resolve, reject) => {
+        //         setTimeout(() => {
+        //             console.log('Inside Hobbies setTimeOut');
+        //             resolve(["Cricket", 'Reading', 'Dancing'])
+        //         }, 1000)
+        //     })
+
+        // }
+
+        // const nm = getName("Saquib", (nm) => {
+        //     console.log(nm);
+        //     getHobbies(nm, (hobby) => {
+        //         console.log(hobby)
+        //     })
+        // });
+
+        // getName('Saquib')
+        // .then(nm => getHobbies(nm))
+        // .then(hobby => console.log(hobby))
+
+        // console.log('End');
+
+
+
+        console.log('Start');
+        function getName(name) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    console.log("Inside SetTimeOut");
+                    resolve(name);
+                }, 2000)
+            })
+        }
+
+        function getHobbies(name) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    console.log('Inside Hobbies setTimeOut');
+                    resolve(["Cricket", 'Reading', 'Dancing'])
+                }, 1000)
+            })
+
+        }
+
+        // getName('Saquib')
+        //     .then(nm => getHobbies(nm))
+        //     .then(hobby => console.log(hobby))
+
+        async function showHobby() {
+            const nm = await getName('Saquib')
+            const hobby = await getHobbies(nm)
+            console.log(hobby);
+        }
+        showHobby();
+        console.log('End');
+
+    </script>
+</body>
+
+</html>
