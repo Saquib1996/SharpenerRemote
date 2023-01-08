@@ -147,6 +147,7 @@
                     <option>Neurology</option>
                     <option>Urology</option>
                     <option>Nephrology</option>
+                    <option>Dermatology</option>
                 </select>
             </div>
             <input class="btn" type="submit" value="Book Appointment">
@@ -177,8 +178,7 @@
 <script>
 
     document.querySelector('#my-form').addEventListener('submit', patientRecord);
-    let arr = JSON.parse(localStorage.getItem("Data")) || [];
-    function patientRecord() {
+    function patientRecord(event) {
         event.preventDefault();
         let obj = {
             Name: document.querySelector("#name").value,
@@ -186,8 +186,7 @@
             Mobile: document.querySelector("#mob").value,
             Department: document.querySelector("#depart").value
         }
-        arr.push(obj);
-        axios.post('https://crudcrud.com/api/bbee92f50e7a4176a6120855fb2e5de4/appointmentData')
+        axios.post('https://crudcrud.com/api/b79b954e6753403e91f8932fbae8fde2/appointmentData1', obj)
             .then((response) => {
                 displayRecord(response.data);
                 console.log(response);
@@ -195,42 +194,63 @@
             .catch((error) => {
                 console.log(error);
             });
-        displayRecord(patient);
-        localStorage.setItem('Data', JSON.stringify(arr));
-    }
 
-    let patient = JSON.parse(localStorage.getItem('Data')) || [];
-    displayRecord(patient);
-    function displayRecord(patient) {
-        document.querySelector('tbody').innerHTML = "";
-        // console.log(patient);
-        patient.forEach(function (el, index) {
-            let tr = document.createElement('tr')
-            let td1 = document.createElement('td')
-            td1.innerText = el.Name;
-            let td2 = document.createElement('td')
-            td2.innerText = el.Email;
-            let td3 = document.createElement('td')
-            td3.innerText = el.Mobile;
-            let td4 = document.createElement('td')
-            td4.innerText = el.Department;
-            let td5 = document.createElement("td");
-            td5.innerText = "Delete";
-            td5.style.color = "red";
-            td5.style.cursor = "pointer";
-            td5.addEventListener("click", function () {
-                deleteBookmark(index);
+    }
+    window.addEventListener("DOMContentLoaded", () => {
+        axios.get("https://crudcrud.com/api/b79b954e6753403e91f8932fbae8fde2/appointmentData1")
+            .then((response) => {
+                console.log(response);
+                for (var i = 0; i < response.data.length; i++) {
+                    displayRecord(response.data[i]);
+                }
             })
-            tr.append(td1, td2, td3, td4, td5)
-            document.querySelector('tbody').append(tr);
+            .catch((error) => {
+                console.log(error);
+            })
+    })
+
+    function displayRecord(patient) {
+        let tr = document.createElement('tr')
+        let td1 = document.createElement('td')
+        td1.innerText = patient.Name;
+        let td2 = document.createElement('td')
+        td2.innerText = patient.Email;
+        let td3 = document.createElement('td')
+        td3.innerText = patient.Mobile;
+        let td4 = document.createElement('td')
+        td4.innerText = patient.Department;
+        let td5 = document.createElement("td");
+        td5.innerText = "Delete";
+        td5.style.color = "red";
+        td5.style.cursor = "pointer";
+        td5.addEventListener("click", function () {
+            deleteUser(patient._id);
+            // window.location.reload();
         })
+        tr.id = patient._id;
+        tr.append(td1, td2, td3, td4, td5)
+        document.querySelector('tbody').append(tr);
     }
 
-    displayRecord(patient);
-    function deleteBookmark(index) {
-        patient.splice(index, 1);
-        localStorage.setItem("Data", JSON.stringify(patient));
-        window.location.reload();
-        // displayRecord(patient);
+    function deleteUser(userId) {
+        axios.delete(`https://crudcrud.com/api/b79b954e6753403e91f8932fbae8fde2/appointmentData1/${userId}`)
+            .then((response) => {
+                removeFromScreen(userId);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     }
+
+    function removeFromScreen(userId) {
+        const parentNode = document.querySelector('#body');
+        const childNodeToBeDeleted = document.getElementById(userId);
+        console.log(childNodeToBeDeleted);
+        if (childNodeToBeDeleted) {
+            parentNode.removeChild(childNodeToBeDeleted);
+
+        }
+
+    }
+
 </script>
