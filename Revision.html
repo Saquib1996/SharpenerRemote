@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revision</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+    // console.log(a);
+    // var a=5;
+    // console.log(b);
+
+    // let a =5;
+    // var b=6;
+    // console.log(this.b);
+    // console.log(window.b);
+    // console.log(this.a); // Out of global scope
+    // console.log(window.a); // Out of global scope
+
+    // function greet(){
+    //     let n='Raj';
+    //     return function(){
+    //         console.log(n);
+    //     }
+    // }
+
+    // let x = greet();
+    // x();
+
+    // setTimeout(() => console.log('Timer 1 expired'),8000)
+    // setTimeout(() => console.log('Timer 2 expired'),3000)
+    // function x(z) {
+    //     console.log('inside x');
+        
+    // }
+    // x(function y(){
+    //     setTimeout(() => {
+    //         console.log('inside y');
+    //     }, 3000);
+    // })
+
+    let multiply = function (x,y){
+        console.log(x*y);
+    }
+    let multiplyByTwo = multiply.bind(this,2);
+    multiplyByTwo(5);
+    let multiplyByThree = multiply.bind(this,3);
+    multiplyByThree(5);
+
+</script>
