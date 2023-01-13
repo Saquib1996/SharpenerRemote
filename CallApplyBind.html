@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CallApplyBind</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    // const obj={
+    //     name:'Saquib',
+    //     age:25,
+    //     Func:function(){
+    //         console.log(this.age);
+    //     }
+    // }
+    // obj.Func.call({age:34});
+
+    // const Jethalaal={
+    //     wife:'Daya',
+    //     age:45
+    // }
+
+    // const Bhiday={
+    //     wife:'Madhavi',
+    //     age:56
+    // }
+
+    // function Popatlaal(){
+    //     console.log(this.wife+' will cook food');
+    // }
+
+    // Popatlaal.call(Jethalaal);
+    // Popatlaal.call(Bhiday);
+
+
+    // const Jethalaal = {
+    //     wife: 'Daya',
+    //     age: 45
+    // }
+
+    // const Bhiday = {
+    //     wife: 'Madhavi',
+    //     age: 56
+    // }
+
+    // function Popatlaal(a, b) {
+    //     console.log(this.wife + ' will cook food');
+    //     console.log(`a = ${a} and b = ${b}`);
+    // }
+
+    // Popatlaal.call(Jethalaal, 'Hello', 30);
+    // // Popatlaal.call(Bhiday);
+
+    //  Apply
+
+    // const Jethalaal = {
+    //     wife: 'Daya',
+    //     age: 45
+    // }
+
+    // const Bhiday = {
+    //     wife: 'Madhavi',
+    //     age: 56
+    // }
+
+    // function Popatlaal(a, b) {
+    //     console.log(this.wife + ' will cook food');
+    //     console.log(`a = ${a} and b = ${b}`);
+    // }
+
+    // Popatlaal.apply(Jethalaal, ['Hello', 30]);
+    // // Popatlaal.call(Bhiday);
+
+
+    // Bind
+
+    const Jethalaal = {
+        wife: 'Daya',
+        age: 45
+    }
+
+    const Bhiday = {
+        wife: 'Madhavi',
+        age: 56
+    }
+
+    function Popatlaal(a, b) {
+        console.log(this.wife + ' will cook food');
+        console.log(`a = ${a} and b = ${b}`);
+    }
+
+    const Func = Popatlaal.bind(Jethalaal);
+    Func('Hello', 20);
+
+</script>
