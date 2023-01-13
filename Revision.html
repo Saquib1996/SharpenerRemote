@@ -157,24 +157,39 @@
     // a=[1,2,3]
     // let x =[a]
 
-    async function fun1() {
-        await console.log('a');
-        await console.log('b');
-        await new Promise((resolve,reject) =>{
-            setTimeout(() => {
-                console.log('c')
-                resolve();
-            }, 1000);
-           
-         })
-        await new Promise((resolve,reject) =>{
-            setTimeout(() => {
-                console.log('d');
-                resolve();
-            },0);
-         })
-         
-        await console.log('e');
-    }
-    fun1()
+    // async function fun1() {
+    //     await console.log('a');
+    //     await console.log('b');
+    //     await new Promise((resolve,reject) =>{
+    //         setTimeout(() => {
+    //             console.log('c')
+    //             resolve();
+    //         }, 1000);
+
+    //      })
+    //     await new Promise((resolve,reject) =>{
+    //         setTimeout(() => {
+    //             console.log('d');
+    //             resolve();
+    //         },0);
+    //      })
+
+    //     await console.log('e');
+    // }
+    // fun1()
+
+    let me = {
+        name: "Saquib",
+        thisInArrow: () => {
+            console.log("My name is " + this.name); 
+        },
+        thisInRegular() {
+            console.log("My name is " + this.name);
+        }
+    };
+    me.thisInArrow();
+    me.thisInRegular();
+
+    
+
 </script>
