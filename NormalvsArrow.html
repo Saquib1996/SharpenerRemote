@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Normalv/sArrow</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    //Arguments objects are not available in arrow function
+
+    // function add(x, y) {
+    //     console.log(arguments);
+    //     return x + y;
+    // }
+    // add(10, 15)
+
+    // const add = (x, y) => {
+    //     console.log(arguments);
+    //     return x + y;
+    // }
+    // add(10, 15)
+
+    // Regular functions created using function declarations or expression are 'constructible' and 'callable'
+
+    // function Car(name) {
+    //     this.brand = name;
+    // }
+    // let carData = new Car('Maruti');
+    // console.log(carData);
+
+    // const Car = (name) => {
+    //     this.brand = name;
+    // }
+    // let carData = new Car('Maruti');
+    // console.log(carData);
+
+    // ********************************** By code pro ************************************
+
+    // Syntax Differences
+
+    // const multiply1 = function (a, b) {
+    //     return a * b;
+    // }
+    // console.log(multiply1(3, 4));
+
+    // //using arrow function
+
+    // const multiply2 = (a, b) => a * b;
+    // console.log(multiply2(3, 4));
+
+    // const square = a => a * a;
+    // console.log(square(4));
+
+    // No arguments object
+
+    // function add(a, b) {
+    //     console.log(arguments);
+    //     const args = Array.from(arguments);
+    //     console.log(args);
+    //     return args.reduce((a, b) => a + b);
+    // }
+    // console.log(add(2, 4, 4, 5, 6));
+
+
+    // const sum = (a, b) => {
+    //     console.log(arguments);
+    //     const args = Array.from(arguments);
+    //     console.log(args);
+    //     return args.reduce((a, b) => a + b);
+    // }
+    // console.log(sum(2, 4, 4, 5, 6));
+
+    // const sum = (...values) => {
+    //     console.log(values);
+    //     return values.reduce((a, b) => a + b);
+    // }
+    // console.log(sum(2, 4, 4, 5, 6));
+
+
+
+    // There is no Prototype object for arrow function
+    // function regularFunction() {
+    // }
+    // const arrowFunction = () => {
+    // }
+    // console.log(regularFunction.prototype);
+    // console.log(arrowFunction.prototype);
+
+    // function regularFunction() {
+    //     console.log('Regular', this);
+    // }
+    // const arrowFunction = () => {
+    //     console.log('Arrow', this);
+    // }
+    // regularFunction();
+    // arrowFunction();
+
+    const user = {
+        name: 'Saquib',
+        getNameInRegular: function () {
+            console.log('Regular', this.name);
+        },
+        getNameInArrow: () => {
+            console.log('Arrow', this.name);
+        }
+    }
+
+    user.getNameInRegular();
+    user.getNameInArrow();
+    
+</script>
