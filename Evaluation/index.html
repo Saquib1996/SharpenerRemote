@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evaluation</title>
+  <link rel="stylesheet" href="index.css" />
+</head>
+
+<body>
+  <!-- Dont make any changes here -->
+  <h1>Masai Evaluation Report</h1>
+
+  <div>
+    <!-- ***** We are using form here  ****  -->
+    <form>
+      <label for="">Student Image</label><br />
+      <input id="image" type="text" placeholder="Enter Image URL" /><br />
+      <label for="">Student Name</label><br />
+      <input id="name" type="text" placeholder="Enter Student Name" /><br />
+      <label for="">Batch </label><br />
+      <select id="batch">
+        <option value="FT WEB-17">FT WEB-17</option>
+        <option value="FT WEB-16">FT WEB-16</option>
+        <option value="FT WEB-15">FT WEB-15</option>
+        <option value="FT WEB-14">FT WEB-14</option>
+      </select><br />
+      <label for="">DSA </label><br />
+      <input id="dsa" type="number" placeholder="Enter DSA score out of 10" /><br />
+      <label for="">Skillathon </label><br />
+      <input id="cs" type="number" placeholder="Enter Skillathon score out of 10" /><br />
+      <label for="">Coding </label><br />
+      <input id="coding" type="number" placeholder="Enter Coding score out of 10" /><br />
+      <input type="submit" />
+    </form>
+    <table>
+      <!-- Dont change order of columns -->
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Batch</th>
+          <th>DSA</th>
+          <th>Skillathon</th>
+          <th>Coding</th>
+          <th>Percentage %</th>
+          <th>Status</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Append your output to tbody -->
+      </tbody>
+    </table>
+  </div>
+</body>
+
+</html>
+
+<script>
+  document.querySelector("form").addEventListener("submit", myFunc);
+  let detailsArr = JSON.parse(localStorage.getItem('detailsData')) || [];
+  displayTable(detailsArr);
+  function myFunc(event) {
+    event.preventDefault();
+    let detailsObj = {
+      avtar: document.querySelector("#image").value,
+      StdnName: document.querySelector("#name").value,
+      StdnBatch: document.querySelector("#batch").value,
+      DSA: document.querySelector("#dsa").value,
+      Skillathon: document.querySelector("#cs").value,
+      Coding: document.querySelector("#coding").value
+    }
+    detailsArr.push(detailsObj);
+    displayTable(detailsArr);
+    localStorage.setItem('detailsData', JSON.stringify(detailsArr))
+  }
+
+  function displayTable(detailsArr) {
+    document.querySelector('tbody').innerHTML = "";
+    detailsArr.forEach((el,index) => {
+      let tr = document.createElement("tr");
+      let td1 = document.createElement("td");
+      td1.innerText = el.avtar;
+      let td2 = document.createElement("td");
+      td2.innerText = el.StdnName;
+      let td3 = document.createElement("td");
+      td3.innerText = el.StdnBatch
+      let td4 = document.createElement("td");
+      td4.innerText = el.DSA;
+      let td5 = document.createElement("td");
+      td5.innerText = el.Skillathon
+      let td6 = document.createElement("td");
+      td6.innerText = el.Coding;
+      let obtainedMarks = Number(el.DSA) + Number(el.Skillathon) + Number(el.Coding);
+      let Percentage = (obtainedMarks / 30) * 100;
+      let td7 = document.createElement("td");
+      td7.innerText = Percentage;
+      let td8 = document.createElement("td");
+      if (Percentage >= 50) {
+        td8.innerText = "Regular";
+        td8.style.backgroundColor = "green";
+        td8.style.color = "white";
+      }
+      else {
+        td8.innerText = "Async";
+        td8.style.backgroundColor = "red";
+        td8.style.color = "white";
+      }
+      let td9 = document.createElement("td");
+      td9.innerText = "DELETE";
+      td9.addEventListener('click',function(){
+        deleteRow(el,index);
+      })
+      td9.style.backgroundColor = "red";
+      td9.style.cursor= "pointer";
+      td9.style.color = "white";
+      tr.append(td1, td2, td3, td4, td5, td6, td7, td8, td9);
+      document.querySelector("tbody").append(tr);
+    });
+  }
+
+  function deleteRow(el,index) {
+    detailsArr.splice(index,1);
+    localStorage.setItem('detailsData',JSON.stringify(detailsArr));
+    displayTable(detailsArr);
+  }
+
+
+</script>
