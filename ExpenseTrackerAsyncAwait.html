@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Listing</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 1.6;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    ul li {
+        padding: 5px;
+        background: #f4f4f4;
+        margin: 5px 0;
+    }
+
+    header {
+        background: #b5a5a5;
+        padding: 1rem;
+        text-align: center;
+    }
+
+    .container {
+        margin: auto;
+        width: 500px;
+        overflow: auto;
+        padding: 3rem 2rem;
+    }
+
+    #my-form {
+        padding: 2rem;
+        background: #f4f4f4;
+    }
+
+    #my-form label {
+        display: block;
+    }
+
+    #my-form input[type='text'],
+    #depart,
+    #SP {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    .btn {
+        display: block;
+        width: 100%;
+        padding: 10px 15px;
+        border: 0;
+        background: #333;
+        color: #fff;
+        border-radius: 5px;
+        margin: 5px 0;
+        cursor: pointer;
+    }
+
+    .btn:hover {
+        background: #444;
+    }
+
+    .bg-dark {
+        background: #333;
+        color: #fff;
+    }
+
+    .error {
+        background: orangered;
+        color: #fff;
+        padding: 5px;
+        margin: 5px;
+    }
+
+    table,
+    td,
+    th {
+        border: 1px solid #ddd;
+        text-align: center;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 70%;
+        margin: auto;
+        margin-top: 50px;
+    }
+
+    #del {
+        cursor: pointer;
+    }
+
+    #tab {
+        /* width: auto; */
+        /* height: 1000px; */
+        margin: auto;
+    }
+
+    #output {
+        margin: auto;
+        margin-top: 100px;
+        margin-bottom: 100px;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <header>
+        <h1>Product Details</h1>
+    </header>
+    <div>
+
+    </div>
+    <section class="container">
+        <form id="my-form">
+            <h1>Product</h1>
+            <!-- <div class="msg"></div> -->
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+            </div>
+            <div>
+                <label for="SP">Selling Price:</label>
+                <input type="number" id="SP" required>
+            </div>
+            <input class="btn" type="submit" value="Add Product">
+        </form>
+    </section>
+    <div id="tab">
+        <table>
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Selling Price</th>
+                    <th id="del">Delete</th>
+                </tr>
+            </thead>
+            <tbody id="body">
+                <!-- Append your output to tbody -->
+            </tbody>
+        </table>
+    </div>
+
+    <div id="output">
+        <h1 id="out"></h1>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js"></script>
+</body>
+
+</html>
+
+<script>
+
+    let arr1 = [];
+    document.querySelector('#my-form').addEventListener('submit', async (event) => {
+        event.preventDefault();
+        let obj = {
+            Name: document.querySelector("#name").value,
+            Price: document.querySelector("#SP").value
+        }
+        arr1.push(parseInt(obj.Price));
+        totalValue(arr1);
+        try {
+            const post = await axios.post('https://crudcrud.com/api/a4a5ffb941fe4a20868fe568b4650c32', obj);
+            displayRecord(post.data);
+            console.log(post);
+        } catch (error) {
+            console.log(error);
+        }
+    });
+
+    window.addEventListener("DOMContentLoaded", async () => {
+        try {
+            const response = await axios.get("https://crudcrud.com/api/a4a5ffb941fe4a20868fe568b4650c32");
+            console.log(response);
+            for (var i = 0; i < response.data.length; i++) {
+                displayRecord(response.data[i]);
+                arr1.push(parseInt(response.data[i].Price));
+            }
+            totalValue(arr1);
+        } catch (error) {
+            console.log(error);
+        }
+    });
+
+    function displayRecord(product) {
+        let tr = document.createElement('tr')
+        let td1 = document.createElement('td')
+        td1.innerText = product.Name;
+        let td2 = document.createElement('td')
+        td2.innerText = product.Price;
+        let td3 = document.createElement("td");
+        td3.innerText = "Delete";
+        td3.style.color = "white";
+        td3.style.cursor = "pointer";
+        td3.style.backgroundColor = "red"
+        td3.addEventListener("click", async function () {
+            try {
+                await deleteUser(product._id);
+            } catch (error) {
+                console.log(error);
+            }
+        });
+        tr.id = product._id;
+        tr.append(td1, td2, td3)
+        document.querySelector('tbody').append(tr);
+
+    }
+
+    async function deleteUser(userId) {
+        try {
+            const response = await axios.delete(`https://crudcrud.com/api/a4a5ffb941fe4a20868fe568b4650c32/${userId}`);
+                removeFromScreen(userId);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    function removeFromScreen(userId) {
+        const parentNode = document.querySelector('#body');
+        const childNodeToBeDeleted = document.getElementById(userId);
+        if (childNodeToBeDeleted) {
+            parentNode.removeChild(childNodeToBeDeleted);
+        }
+    }
+
+    function totalValue(arr, minus) {
+        let sum = 0;
+        for (var i = 0; i < arr.length; i++) {
+            sum = sum + arr[i];
+        }
+        if (minus) {
+            sum = sum - minus;
+        }
+        let h1 = document.getElementById('out');
+        h1.innerText = `Total Value Worth of Products=${sum}`;
+        output.append(h1);
+    }
+</script>
