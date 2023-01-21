@@ -167,37 +167,44 @@
 
 
 
-        console.log('Start');
-        function getName(name) {
-            return new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    console.log("Inside SetTimeOut");
-                    resolve(name);
-                }, 2000)
-            })
-        }
+        // console.log('Start');
+        // function getName(name) {
+        //     return new Promise((resolve, reject) => {
+        //         setTimeout(() => {
+        //             console.log("Inside SetTimeOut");
+        //             resolve(name);
+        //         }, 2000)
+        //     })
+        // }
 
-        function getHobbies(name) {
-            return new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    console.log('Inside Hobbies setTimeOut');
-                    resolve(["Cricket", 'Reading', 'Dancing'])
-                }, 1000)
-            })
+        // function getHobbies(name) {
+        //     return new Promise((resolve, reject) => {
+        //         setTimeout(() => {
+        //             console.log('Inside Hobbies setTimeOut');
+        //             resolve(["Cricket", 'Reading', 'Dancing'])
+        //         }, 1000)
+        //     })
 
-        }
+        // }
 
-        // getName('Saquib')
-        //     .then(nm => getHobbies(nm))
-        //     .then(hobby => console.log(hobby))
+        // // getName('Saquib')
+        // //     .then(nm => getHobbies(nm))
+        // //     .then(hobby => console.log(hobby))
 
-        async function showHobby() {
-            const nm = await getName('Saquib')
-            const hobby = await getHobbies(nm)
-            console.log(hobby);
-        }
-        showHobby();
-        console.log('End');
+        // async function showHobby() {
+        //     const nm = await getName('Saquib')
+        //     const hobby = await getHobbies(nm)
+        //     console.log(hobby);
+        // }
+        // showHobby();
+        // console.log('End');
+
+        // console.log("Saquib");
+        // setTimeout(() => {
+        //     console.log(a);
+        // },5000)
+        // console.log("Hassan");
+
 
     </script>
 </body>
