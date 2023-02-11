@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        body {
+            background-image: url(istockphoto-1415835098-170667a.jpg);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            text-align: center;
+            color: rgb(233, 172, 4);
+            border: 2px saddlebrown;
+            padding: 30px;
+        }
+
+        h3 {
+            color: rgb(12, 14, 15);
+            font-family: sans-serif;
+            text-align: center;
+        }
+
+        h6 {
+            color: rgb(12, 14, 15);
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+        }
+    </style>
+    <title>Registration Form</title>
+</head>
+
+<body>
+    <form onsubmit="submitForm()">
+        <fieldset>
+            <h3>Book a Call</h3>
+            <h6>Book a call slot and our representative will call you within 1hr of selected time.</h6>
+            <hr>
+            <label for="name" style="text-align: left;">Name:</label><br>
+            <input type="text" id="name" name="name"><br>
+            <label for="email">Email:</label><br>
+            <input type="text" id="email" name="email"><br>
+            <label for="phone">Phone:</label><br>
+            <input type="text" id="phone" name="phone"><br>
+            <label for="call">Time for Call</label><br>
+            <input type="date" name="call" id="call" value="2023-01-17">
+            <input type="time" name="call" id="call" value="11:00"><br>
+            <input type="submit" value="GET A CALL">
+        </fieldset>
+    </form>
+    <script>
+        function submitForm() {
+            event.preventDefault();
+            console.log(document.getElementById('name').value);
+        }
+       
+    </script>
+</body>
+
+</html>
