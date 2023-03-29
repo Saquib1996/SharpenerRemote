@@ -13,7 +13,10 @@ app.use('/add-product', (req, res, next) => {
     // console.log('In another middleware');
     res.send('<form action="/product" method="POST"><input type="text" name="title"><button type="submit">Add Product</button></form>');
 });
-
+app.use('/add-size', (req, res, next) => {
+    // console.log('In another middleware');
+    res.send('<form action="/product" method="POST"><input type="text" name="Size"><button type="submit">Enter Size</button></form>');
+});
 app.use('/product', (req, res, next) => {
     console.log(req.body);
     res.redirect('/')
