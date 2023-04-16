@@ -15,7 +15,7 @@ res.end('About')
 break
 default:
 res.writeHead(404, { 'Content-Type': 'text/plain' })
-res.end('Not Found')
+res.end('<h1>Not Found<h1>')
 break
 } })
 server.listen(port, () => console.log(`server started on port ${port}; ` +
