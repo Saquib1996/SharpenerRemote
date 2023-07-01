@@ -1,0 +1,11 @@
+{
+  "student":
+  [
+  {"name":"Saquib","city":"Darbhanga"},
+  {"name":"Pulkit Tyagi","city":"Delhi"},
+  {"name":"Ramil","city":"Delhi"}
+],
+  "teachers":
+  [
+  
+  {"name":"Arvind Dhingra","sub":"Coding"},{"name":"Tariq Ahmad","sub":"Chemistry"}]}
