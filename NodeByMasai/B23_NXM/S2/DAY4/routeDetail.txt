@@ -1,0 +1,5 @@
+Route visited:/ | Method: GET
+Route visited:/ | Method: GET | Response Time:27 ms
+Route visited:/about | Method: GET | Response Time:3 ms
+Route visited:/data | Method: GET | Response Time:2 ms
+Route visited:/contact | Method: GET | Response Time:2 ms
