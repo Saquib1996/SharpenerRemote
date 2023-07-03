@@ -136,6 +136,108 @@
 
 /****************************************************************************************/
 
+// const express = require("express");
+
+
+// const app = express();
+
+// const fs = require('fs');
+// const cors = require('cors');
+// app.use(express.json())
+// app.use(cors());
+// const { teacherRouter } = require('./routes/TeacherRoutes');
+// const { studentRouter } = require('./routes/StudentRoutes');
+
+// const { routeLogger } = require('./middlewares/LoggerMiddleware');
+// app.get("/", (req, res) => {
+//     console.log('HOME PAGE'); // 2
+//     res.send('<h1>THIS IS HOME PAGE</h1>')
+// })
+
+// app.listen(4500, () => {
+//     console.log("Server is running at 4500");
+// })
+
+/************************************************************************************** */
+
+// const express = require("express");
+
+
+// const app = express();
+
+// const fs = require('fs');
+// const cors = require('cors');
+// app.use(express.json())
+// app.use(cors());
+// const { teacherRouter } = require('./routes/TeacherRoutes');
+// const { studentRouter } = require('./routes/StudentRoutes');
+
+// const { routeLogger } = require('./middlewares/LoggerMiddleware');
+// app.get("/", (req, res) => {
+//     console.log('HOME PAGE'); // 2
+//     res.send('<h1>THIS IS HOME PAGE</h1>')
+// })
+
+// app.get('/wapi',(req,res)=>{
+//     let data={
+//         banglore:'25C',
+//         delhi:'45C',
+//         pune:'14C'
+//     }
+//     const {city} = req.query;
+
+//     // if(city === 'pune') res.send(`Details of ${city}`);
+//     // else if (city==="delhi") res.send(`Details of ${city}`);
+//     // else res.send('NA')
+
+//     res.send(`The temperature at ${city} is ${data[city]}`)
+// })
+
+// app.listen(4500, () => {
+//     console.log("Server is running at 4500");
+// })
+
+/************************************************************************************/
+
+// const express = require("express");
+
+
+// const app = express();
+
+// const fs = require('fs');
+// const cors = require('cors');
+// app.use(express.json())
+// app.use(cors());
+// // const { teacherRouter } = require('./routes/TeacherRoutes');
+// // const { studentRouter } = require('./routes/StudentRoutes');
+
+// const { routeLogger } = require('./middlewares/LoggerMiddleware');
+// app.get("/", (req, res) => {
+//     console.log('HOME PAGE'); // 2
+//     res.send('<h1>THIS IS HOME PAGE</h1>')
+// })
+
+// app.get('/wapi',(req,res)=>{
+//     let data={
+//         banglore:'25C',
+//         delhi:'45C',
+//         pune:'14C'
+//     }
+//     const {city} = req.query;
+//     res.send(`The temperature at ${city} is ${data[city]}`)
+// })
+
+// app.get('/students/:id',(req,res)=>{
+//     const roll_no = req.params.id
+//     res.send(`The details of student with roll no: ${roll_no}`)
+// })
+
+// app.listen(4500, () => {
+//     console.log("Server is running at 4500");
+// })
+
+/*************************************************************************** */
+
 const express = require("express");
 
 
@@ -145,14 +247,32 @@ const fs = require('fs');
 const cors = require('cors');
 app.use(express.json())
 app.use(cors());
-const { teacherRouter } = require('./routes/TeacherRoutes');
-const { studentRouter } = require('./routes/StudentRoutes');
+// const { teacherRouter } = require('./routes/TeacherRoutes');
+// const { studentRouter } = require('./routes/StudentRoutes');
 
 const { routeLogger } = require('./middlewares/LoggerMiddleware');
 app.get("/", (req, res) => {
     console.log('HOME PAGE'); // 2
     res.send('<h1>THIS IS HOME PAGE</h1>')
 })
+
+app.get('/wapi', (req, res) => {
+    console.log(req.query);
+    if (req.query.city1 && !req.query.city2) {
+        res.send(`${req.query.city1} is there`)
+    } else if (req.query.city2 && !req.query.city1) {
+        res.send(`${req.query.city2} is there`)
+    }else{
+        res.send(`${req.query.city1} & ${req.query.city2} is there `)
+    }
+    res.send(`See it in terminal`)
+})
+
+// app.get('/students/:id',(req,res)=>{
+//     const roll_no = req.params.id
+//     res.send(`The details of student with roll no: ${roll_no}`)
+// })
+
 
 app.listen(4500, () => {
     console.log("Server is running at 4500");
