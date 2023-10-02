@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch</title>
+</head>
+<body>
+    <div id="container">
+
+    </div>
+</body>
+</html>
+
+<script>
+    // let x = fetch();
+    // console.log(x);
+
+
+// let container = document.getElementById("container")
+
+// const url = "https://reqres.in/api/users?page=2";
+// fetch(url)
+// .then(function(res){
+//     return res.json();
+// })
+// .then(function(res){
+//     console.log(res);
+//     append(res.data);
+// })
+// .catch((error)=>{
+//     console.log(error)
+// })
+
+// function append(data){
+
+//     data.forEach((el) => {
+//         let img = document.createElement("img");
+//         img.src=el.avatar;
+//         let p1 = document.createElement("p");
+//         p1.innerText = el.email;
+//         let p2 = document.createElement("p");
+//         p2.innerText = `${el.first_name} ${el.last_name}`; 
+//         let div = document.createElement("div");
+//         div.append(img,p1,p2);
+//         container.append(div);
+//     });
+// }
+
+const url = "https://fakestoreapi.com/products";
+async function getData(){
+    try {
+        let res = await fetch(url);
+        let data = await res.json();
+        append(data);
+        console.log(data);
+    } catch (error) {
+        console.log(error);
+    } 
+}
+getData();
+
+function append(data) {
+    let container = document.getElementById("container");
+
+    data.sort((a,b)=>{
+        return a.price-b.price;
+    })
+
+     data = data.filter((el)=>{
+        return el.category === "jewelery"
+    })
+    data.forEach((el) => {
+        let img = document.createElement("img")
+        img.src = el.image;
+
+        let p = document.createElement("p");
+        p.innerText = el.title;
+
+        let price = document.createElement("p");
+        price.innerText = el.price;
+
+        let div = document.createElement("div")
+        div.append(img,p,price);
+        container.append(div)
+        
+    });
+    
+}
+
+</script>
