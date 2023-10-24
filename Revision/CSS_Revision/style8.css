@@ -1,0 +1,10 @@
+div{
+    border: 2px solid red;
+    font-size: 20px;
+}
+p{
+    border: 1px solid green;
+    width: 50%;
+    background: aliceblue;
+    font-size: 100%;
+}

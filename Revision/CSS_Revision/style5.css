@@ -1,0 +1,27 @@
+body{
+    padding: 0px 30px;
+}
+nav{
+    /* border: 1px solid red; */
+    background-color: #cecece;
+    width: 100%;
+    height: 70px;
+}
+a{
+    color: #444;
+    text-decoration: underline;
+}
+h1{
+    border-bottom: 1px solid black;
+}
+nav ul{
+    padding-left: 0px;
+    text-align: center;
+}
+li{
+    border-bottom: 1px solid black;
+    display: inline-block;
+    margin: 10px 20px;
+   font-size: 20px;
+   text-transform: uppercase;
+}
