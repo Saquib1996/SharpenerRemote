@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <title>Document</title>
 </head>
 
 <body>
-
     <header class="header">
         <nav class="navbar">
             <div class="container">
@@ -27,7 +27,7 @@
         </nav>
     </header>
     <div class="title1">
-        <h1>WE CREATE <span>PATHWAYS</span> TO EXPERIENCE <span>LIFE ON <br> YOUR TERMS</span> </h1>
+        <h1 data-aos="fade-up" style="transition: 2s">WE CREATE <span>PATHWAYS</span> TO EXPERIENCE <span>LIFE ON <br> YOUR TERMS</span> </h1>
     </div>
     <section class="section1">
         <div class="box1">
@@ -61,19 +61,19 @@
     </section>
 
     <section class="section3">
-        <div>
+        <div data-aos="fade-down-left" style="transition:5s">
             <img src="https://omninos.shop/lifeManaged/arrowlogo.png" alt="Error">
             <p>A life managed well is not <br> ruled by numbers & plans, <br> but freed by them</p>
         </div>
-        <div>
+        <div data-aos="fade-down-left" style="transition:5s">
             <img src="https://omninos.shop/lifeManaged/moneylogo.png" alt="Error">
             <p>A life managed well is not <br> ruled by numbers & plans, <br> but freed by them</p>
         </div>
-        <div>
+        <div data-aos="fade-down-left" style="transition:5s">
             <img src="https://omninos.shop/lifeManaged/documentlogo.png" alt="Error">
             <p>Poor decisions are too often <br> made because of a lack of <br> clarity.</p>
         </div>
-        <div>
+        <div data-aos="fade-down-left" style="transition:5s">
             <img src="https://omninos.shop/lifeManaged/waylogo.png" alt="Error">
             <p>This industry’s model <br> offer rewarding good sales over <br> good advice is outdated.</p>
         </div>
@@ -191,7 +191,10 @@
             <br>
         </div>
     </footer>
-
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
 </body>
 
 </html>

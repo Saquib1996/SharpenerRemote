@@ -81,6 +81,7 @@ a {
     background: black;
     color: white;
     padding: 3rem;
+    /* position: relative; */
     /* margin-bottom: 2rem; */
 }
 
@@ -88,6 +89,7 @@ a {
     font-size: 5em;
     word-spacing: 12px;
     line-height: 60px;
+    /* position: absolute; */
 }
 
 .title1 span {
