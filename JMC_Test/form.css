@@ -1,0 +1,48 @@
+form {
+    width: 60%;
+    height: auto;
+    margin: auto;
+}
+
+.form {
+    /* border: 1px solid red; */
+    width: 70%;
+    height: auto;
+    margin: auto;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    background: greenyellow;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.form_el {
+    margin-top: 1rem;
+    padding-left: 2rem;
+}
+
+.inp_el {
+    width: 60%;
+    height: 1.5rem;
+
+}
+
+.btn {
+    margin-top: 1rem;
+    padding: .6rem;
+    font-size: 20px;
+    margin-left: 2rem;
+    width: 10rem;
+    border-radius: .3rem;
+    border: none;
+
+}
+
+.btn_s:hover {
+    background: red;
+    cursor: pointer;
+}
+
+.btn_r:hover {
+    background: green;
+    cursor: pointer;
+}
