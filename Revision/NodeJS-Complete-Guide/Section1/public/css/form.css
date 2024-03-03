@@ -1,0 +1,44 @@
+main {
+    width: 50%;
+    max-width: 90%;
+    /* border: 1px solid red; */
+    height: 100vh;
+    margin: auto;
+}
+
+.product-form {
+    width: 100%;
+    max-width: 90%;
+    /* border: 1px solid red; */
+    height: 100vh;
+    margin: auto;
+}
+
+.form-control {
+    width: 100%;
+    margin: auto;
+}
+
+label {
+    margin: 1.5rem; 
+    font-size: 1.5rem;
+}
+
+#title {
+    display: block;
+    width: 70%;
+    padding: .6rem;
+    margin: 1rem;
+}
+
+button {
+    margin-left: 1rem;
+    padding: 0.7rem;
+    border-radius: 4px;
+    font-size: 1em;
+    border: none;
+}
+button:hover{
+    background: greenyellow;
+    cursor: pointer;
+}
