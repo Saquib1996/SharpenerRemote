@@ -1,18 +1,3 @@
-main {
-    width: 50%;
-    max-width: 90%;
-    /* border: 1px solid red; */
-    height: 100vh;
-    margin: auto;
-}
-
-.product-form {
-    width: 100%;
-    max-width: 90%;
-    /* border: 1px solid red; */
-    height: 100vh;
-    margin: auto;
-}
 
 .form-control {
     width: 100%;
@@ -20,15 +5,11 @@ main {
 }
 
 label {
-    margin: 1.5rem; 
-    font-size: 1.5rem;
+    margin: .5rem 0; 
+    font-size: 1.3rem;
 }
-
-#title {
-    display: block;
-    width: 70%;
-    padding: .6rem;
-    margin: 1rem;
+input{
+    height: 2rem;
 }
 
 button {

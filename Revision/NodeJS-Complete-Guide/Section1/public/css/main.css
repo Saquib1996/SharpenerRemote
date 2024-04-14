@@ -6,8 +6,13 @@ body {
 }
 
 main {
+    width: 50%;
+    max-width: 90%;
+    height: 100vh;
+    margin: auto;
     padding: 2rem;
 }
+
 
 .main-header {
     width: 100%;
@@ -44,4 +49,8 @@ main {
 .main-header__item a:active,
 .main-header__item a.active {
     color: #6200ff;
+}
+
+.centered{
+    text-align: center;
 }

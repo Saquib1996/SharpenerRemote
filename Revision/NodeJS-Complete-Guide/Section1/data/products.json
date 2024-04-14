@@ -1,0 +1,23 @@
+[
+    {
+        "title": "Happy Birthday",
+        "imageUrl": "https://cdn.pixabay.com/photo/2016/04/10/17/24/birthday-cake-1320359_640.jpg",
+        "description": "A very Happy Birthday",
+        "price": "20121",
+        "id": "0.629588095991934"
+    },
+    {
+        "title": "Happy Family",
+        "imageUrl": "https://media.istockphoto.com/id/1325578537/photo/happy-indian-mother-having-fun-with-her-daughter-outdoor-family-and-love-concept-focus-on-mum.webp?b=1&s=612x612&w=0&k=20&c=SJ9XOGSV7al3uhCzrGZx6AiEdxk5AF_MO9o0h_ifyCg=",
+        "description": "A HAppy Family",
+        "price": "11223",
+        "id": "0.7118777498021358"
+    },
+    {
+        "title": "Butterfly",
+        "imageUrl": "https://cdn.pixabay.com/photo/2023/10/10/20/30/petals-8307378_640.jpg",
+        "description": "Beautiful Butterfly",
+        "price": "1234",
+        "id": "0.6292230368689287"
+    }
+]
